@@ -1,0 +1,13 @@
+.nav {
+    display: flex;
+    &-link {
+        color: #fff;
+        text-decoration: none;
+        &:hover {
+            color: rgb(238, 93, 93);
+        }
+        &+& {
+            margin-left: 10px;
+        }
+    }
+}
