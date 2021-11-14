@@ -1,13 +1,18 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 import './navigation.scss';
+import { useAuth } from '../../hooks/useAuth';
+import { NavigationMain } from './NavigationMain/NavigationMain';
+import { NavigationAuth } from './NavigationAuth/NavigationAuth';
 
 const Navigation = () => {
+    const { isAuth } = useAuth()
     return (
         <nav className="nav">
-            <NavLink className="nav-link" to='/'>Home</NavLink>
-            <NavLink className="nav-link" to='/read-books'>Read books</NavLink>
-            <NavLink className="nav-link" to='/add-book'>Add book</NavLink>
+            {
+                isAuth
+                    ? <NavigationMain />
+                    : <NavigationAuth />
+            }
         </nav>
     )
 }

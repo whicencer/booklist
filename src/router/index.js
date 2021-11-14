@@ -1,6 +1,7 @@
 import Main from "../pages/Main";
-import addBook from "../pages/addBook"
+import addBook from "../pages/addBook";
 import readBooks from "../pages/readBooks";
+import AuthPage from "../pages/AuthPage";
 
 export const routes = [
     {
@@ -17,5 +18,15 @@ export const routes = [
         path: '/read-books',
         component: readBooks,
         exact: false
-    }
+    },
+    {
+        path: '/login',
+        component: AuthPage,
+        exact: false
+    },
+    {
+        path: '/register',
+        component: AuthPage,
+        exact: false
+    },
 ]
