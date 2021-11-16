@@ -6,15 +6,17 @@ const BooksList = () => {
     return (
         <div>
             {
-                books.map((el, key) => {
-                    return(
-                        <div key={key}>
-                            <span>{el.bookTitle}</span>
-                            <hr />
-                            <span>{el.author}</span>
-                        </div>
-                    )
-                })
+                books.length === 0
+                    ? <h2>There are no books here...</h2>
+                    : books.map((el, key) => {
+                        return(
+                            <div key={key}>
+                                <span>{el.volumeInfo.title}</span>
+                                <hr />
+                                <span>{el.volumeInfo.authors[0]}</span>
+                            </div>
+                        )
+                    })
             }
         </div>
     )
