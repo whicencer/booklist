@@ -4,7 +4,7 @@ import BooksList from '../components/BooksList/BooksList'
 const Main = () => {
     return (
         <>
-            {/* <BooksList /> */}
+            <BooksList />
         </>
     )
 }
