@@ -1,16 +1,27 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+
+export const getBooks = createAsyncThunk(
+    'Books/getBooks',
+    async (query) => {
+        const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${query}`)
+        const data = await response.json()
+        return data
+    }
+)
 
 const Books = createSlice({
     name: 'Books',
     initialState: {
-        books: [
-            {bookTitle: 'Harry Potter', author: 'Daniel H. Nexon, Iver B. Neumann', year: '2006'}
-        ]
+        books: [],
+        foundBooks: []
     },
     reducers: {
         setBooks(state, action) {
             state.books.push(action.payload)
         },
+    },
+    extraReducers: {
+        [getBooks.fulfilled]: (state, action) => {state.foundBooks.push(...action.payload.items)}
     }
 })
 
