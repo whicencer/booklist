@@ -1,7 +1,7 @@
 import React from 'react';
-import Form from '../Form/Form';
+import Form from '../UI/Form/Form';
 import { useHistory } from 'react-router';
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword, setPersistence, browserLocalPersistence } from "firebase/auth";
 import { useDispatch } from 'react-redux';
 import { setUser } from '../../store/reducers/Auth';
 
@@ -20,7 +20,7 @@ const Login = () => {
                 }))
                 history.push('/')
             })
-            .catch(e => console.log(e))
+            .catch(() => alert('Some Error occured.'))
     }
     return (
         <Form btnTitle="Sign In" handleClick={handleLogin} />

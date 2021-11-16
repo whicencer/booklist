@@ -1,12 +1,12 @@
 import React from 'react';
-import Form from '../Form/Form';
+import Form from '../UI/Form/Form';
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { useDispatch } from 'react-redux';
 import { setUser } from '../../store/reducers/Auth';
 
 export const SignUp = () => {
     const dispatch = useDispatch()
-    const handleLogin = (email, password) => {
+    const handleRegister = (email, password) => {
         const auth = getAuth()
         createUserWithEmailAndPassword(auth, email, password)
             .then(({user}) => {
@@ -16,11 +16,10 @@ export const SignUp = () => {
                     token: user.accessToken,
                     isAuth: true
                 }))
-                console.log(user)
             })
-            .catch(e => console.log(e))
+            .catch(() => alert('Some Error occured.'))
     }
     return (
-        <Form btnTitle="Sign In" handleClick={handleLogin} />
+        <Form btnTitle="Sign Up" handleClick={handleRegister} />
     )
 }
