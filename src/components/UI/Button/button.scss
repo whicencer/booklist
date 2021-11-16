@@ -1,0 +1,17 @@
+.btn {
+    display: block;
+    width: 100%;
+    padding: 8px 10px;
+    transition: background-color .3s;
+    
+    border: 0;
+    background-color: #d4898f;
+    cursor: pointer;
+    
+    font-family: inherit;
+    font-size: 20px;
+    color: #fff;
+    &:hover {
+        background-color: #be6068;
+    }
+}
