@@ -5,6 +5,18 @@
 }
 
 .book {
-    width: 300px;
+    width: 295px;
     margin: 15px;
+    cursor: pointer;
+    transition: .2s;
+    
+    font-family: sans-serif;
+
+    &:hover {
+        transform: scale(1.05);
+    }
+
+    img {width: 200px;}
+    h2 {font-size: 17px;}
+    p {font-size: 15px;}
 }
