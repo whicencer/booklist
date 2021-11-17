@@ -22,13 +22,16 @@ const addBook = () => {
             <div className="books">
                 {
                     foundBooks.map((el, key) => {
+                        const {
+                                authors = ['No authors'],
+                                title='No title',
+                                imageLinks={smallThumbnail: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNT0xwyLstvC7wH8jYIKur3GTcSq-g6fj2EbL4wk-qaONHYjBswa3rpFsZJeEjuXcG-lw&usqp=CAU'}
+                            } = el.volumeInfo
                         return (
                             <div className="book" key={key}>
-                                <img src={el.volumeInfo.imageLinks
-                                    ? el.volumeInfo.imageLinks.smallThumbnail
-                                    : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNT0xwyLstvC7wH8jYIKur3GTcSq-g6fj2EbL4wk-qaONHYjBswa3rpFsZJeEjuXcG-lw&usqp=CAU'} alt="image" />
-                                <h2>{el.volumeInfo.title}</h2>
-                                <p>{el.volumeInfo.authors[0]}</p>
+                                <img src={imageLinks.smallThumbnail} alt="image" />
+                                <h2>{title}</h2>
+                                <p>{authors[0]}</p>
                             </div>
                         )
                     })
