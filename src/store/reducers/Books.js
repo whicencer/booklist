@@ -21,7 +21,7 @@ const Books = createSlice({
         },
     },
     extraReducers: {
-        [getBooks.fulfilled]: (state, action) => {state.foundBooks.push(...action.payload.items)}
+        [getBooks.fulfilled]: (state, action) => {state.foundBooks = [...action.payload.items]}
     }
 })
 
