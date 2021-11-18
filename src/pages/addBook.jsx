@@ -1,14 +1,32 @@
 import React, { useState } from 'react';
+
+import { getAuth } from "@firebase/auth";
+import { doc, setDoc, getFirestore } from '@firebase/firestore';
+
+import BookItem from '../components/BookItem/BookItem'
+
 import { useDispatch } from 'react-redux';
 import Input from '../components/UI/Input/Input';
 import Button from '../components/UI/Button/Button'
 import { getBooks } from '../store/reducers/Books';
 import { useSelector } from 'react-redux';
-import '../assets/styles/addBook.scss'
+import '../assets/styles/books.scss';
 
 const addBook = () => {
     const dispatch = useDispatch()
     const foundBooks = useSelector(state => state.books.foundBooks)
+
+    const firestore = getFirestore()
+    
+
+    const handleAddBook = async (title, author, thumb, id) => {
+        await setDoc(doc(firestore, `user_${getAuth().currentUser.uid}`, `book_${id}`), {
+            title,
+            author,
+            thumb
+        })
+        alert('Book successfully add to read list')
+    }
 
     const [controlInput, setControlInput] = useState('')
 
@@ -28,11 +46,15 @@ const addBook = () => {
                                 imageLinks={smallThumbnail: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNT0xwyLstvC7wH8jYIKur3GTcSq-g6fj2EbL4wk-qaONHYjBswa3rpFsZJeEjuXcG-lw&usqp=CAU'}
                             } = el.volumeInfo
                         return (
-                            <div className="book" key={key}>
-                                <img src={imageLinks.smallThumbnail} alt="image" />
-                                <h2>{title}</h2>
-                                <p>{authors[0]}</p>
-                            </div>
+                            <BookItem
+                                key={key}
+                                handleClick={() => {
+                                    handleAddBook(title, authors[0], imageLinks.smallThumbnail, el.id)
+                                }}
+                                thumbnail={imageLinks.smallThumbnail}
+                                title={title}
+                                author={authors[0]}
+                            />
                         )
                     })
                 }
