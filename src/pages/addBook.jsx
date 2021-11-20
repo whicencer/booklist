@@ -20,17 +20,21 @@ const addBook = () => {
     
 
     const handleAddBook = async (title, author, thumb, id) => {
-        await setDoc(doc(firestore, `user_${getAuth().currentUser.uid}`, `book_${id}`), {
-            title,
-            author,
-            thumb
-        })
-        alert('Book successfully add to read list')
+        const sureToAdd = confirm('Вы уверены что хотите добавить книгу в список?')
+        if(sureToAdd) {
+            await setDoc(doc(firestore, `user_${getAuth().currentUser.uid}`, `book_${id}`), {
+                title,
+                author,
+                thumb,
+                id
+            })
+            alert('Книга успешно добавлена в список!')
+        }
     }
 
     const [controlInput, setControlInput] = useState('')
 
-    const clickHandler = () => {dispatch(getBooks(controlInput))}
+    const clickHandler = () => dispatch(getBooks(controlInput))
     return (
         <div>
             <div style={{maxWidth: '80%', margin: '20px auto'}}>
