@@ -18,7 +18,11 @@ const Routers = () => {
                             return <Route key={el.path} exact={el.exact} path={el.path} component={el.component} />
                         })
             }
+<<<<<<< HEAD
             {isAuth ? <Redirect to="booklist/" /> : <Redirect to="booklist/login" />}
+=======
+            {isAuth ? <Redirect to="/booklist" /> : <Redirect to="/booklist/login" />}
+>>>>>>> main
         </Switch>
     )
 }

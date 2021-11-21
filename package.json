@@ -1,6 +1,10 @@
 {
   "name": "booklist",
+<<<<<<< HEAD
   "homepage": "http://whicencer.github.io/booklist",
+=======
+  "homepage": "https://whicencer.github.io/booklist",
+>>>>>>> main
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
@@ -11,6 +15,7 @@
     "@babel/preset-react": "^7.16.0",
     "@reduxjs/toolkit": "^1.6.2",
     "babel-loader": "^8.2.3",
+    "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^6.5.1",
     "dotenv": "^10.0.0",
     "file-loader": "^6.2.0",
@@ -32,6 +37,9 @@
     "yarn": "^1.22.17"
   },
   "scripts": {
-    "start": "webpack-dev-server --open"
+    "start": "webpack-dev-server --open",
+    "build": "webpack --mode production",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d dist"
   }
 }

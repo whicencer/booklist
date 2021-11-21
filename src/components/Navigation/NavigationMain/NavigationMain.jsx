@@ -14,9 +14,15 @@ export const NavigationMain = () => {
     const user = useAuth()
     return (
         <nav className="nav">
+<<<<<<< HEAD
             <NavLink className="nav-link" to='booklist/'>Home</NavLink>
             <NavLink className="nav-link" to='booklist/read-books'>Read books</NavLink>
             <NavLink className="nav-link" to='booklist/add-book'>Add book</NavLink>
+=======
+            <NavLink className="nav-link" to='/booklist'>Home</NavLink>
+            <NavLink className="nav-link" to='/booklist/read-books'>Read books</NavLink>
+            <NavLink className="nav-link" to='/booklist/add-book'>Add book</NavLink>
+>>>>>>> main
             <p>{user.email} <span className="logout-btn" onClick={handleLogout}>(Logout)</span></p>
         </nav>
     )
