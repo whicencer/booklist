@@ -1,11 +1,28 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
+import { app } from '../../firebase';
+import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
+import { getAuth } from '@firebase/auth';
+
 export const getBooks = createAsyncThunk(
     'Books/getBooks',
     async (query) => {
         const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${query}`)
         const data = await response.json()
         return data
+    }
+)
+
+export const getBooksFromFire = createAsyncThunk(
+    'Books/getBooksFromFire',
+    async () => {
+        const db = getFirestore(app);
+        
+        const user = collection(db, `user_${getAuth().currentUser.uid}`);
+        const bookSnapshot = await getDocs(user);
+        const booksList = bookSnapshot.docs.map(doc => doc.data());
+
+        return booksList
     }
 )
 
