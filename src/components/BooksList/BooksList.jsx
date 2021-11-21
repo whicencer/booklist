@@ -7,9 +7,11 @@ import { deleteBooks } from '../../store/reducers/Books'
 
 import { getAuth } from 'firebase/auth'
 import {doc, deleteDoc, getFirestore} from 'firebase/firestore'
+import { useDispatch } from 'react-redux'
 
 const BooksList = () => {
     const books = useSelector(state => state.books.books)
+    const dispatch = useDispatch()
     
     const firestore = getFirestore()
     const handleRemoveBook = async (id) => {
