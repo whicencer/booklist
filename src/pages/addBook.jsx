@@ -18,7 +18,6 @@ const addBook = () => {
 
     const firestore = getFirestore()
     
-
     const handleAddBook = async (title, author, thumb, id) => {
         const sureToAdd = confirm('Вы уверены что хотите добавить книгу в список?')
         if(sureToAdd) {
@@ -26,15 +25,37 @@ const addBook = () => {
                 title,
                 author,
                 thumb,
-                id
+                id,
+                read: false
             })
             alert('Книга успешно добавлена в список!')
         }
     }
 
-    const [controlInput, setControlInput] = useState('')
+    const found = foundBooks.map((el, key) => {
+        const {
+                authors = ['No authors'],
+                title='No title',
+                imageLinks={smallThumbnail: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNT0xwyLstvC7wH8jYIKur3GTcSq-g6fj2EbL4wk-qaONHYjBswa3rpFsZJeEjuXcG-lw&usqp=CAU'}
+            } = el.volumeInfo
+        return (
+            <BookItem
+                key={key}
+                handleClick={() => {
+                    handleAddBook(title, authors[0], imageLinks.smallThumbnail, el.id)
+                }}
+                thumbnail={imageLinks.smallThumbnail}
+                isRead={false}
+                id={el.id}
+                title={title}
+                author={authors[0]}
+            />
+        )
+    })
 
+    const [controlInput, setControlInput] = useState('')
     const clickHandler = () => dispatch(getBooks(controlInput))
+
     return (
         <div>
             <div style={{maxWidth: '80%', margin: '20px auto'}}>
@@ -42,26 +63,7 @@ const addBook = () => {
                 <Button btnTitle="Search" handleClick={clickHandler} />
             </div>
             <div className="books">
-                {
-                    foundBooks.map((el, key) => {
-                        const {
-                                authors = ['No authors'],
-                                title='No title',
-                                imageLinks={smallThumbnail: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNT0xwyLstvC7wH8jYIKur3GTcSq-g6fj2EbL4wk-qaONHYjBswa3rpFsZJeEjuXcG-lw&usqp=CAU'}
-                            } = el.volumeInfo
-                        return (
-                            <BookItem
-                                key={key}
-                                handleClick={() => {
-                                    handleAddBook(title, authors[0], imageLinks.smallThumbnail, el.id)
-                                }}
-                                thumbnail={imageLinks.smallThumbnail}
-                                title={title}
-                                author={authors[0]}
-                            />
-                        )
-                    })
-                }
+                {found}
             </div>
         </div>
     )
