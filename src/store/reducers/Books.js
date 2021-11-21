@@ -20,7 +20,6 @@ const Books = createSlice({
         setBooks(state, action) {
             state.books = action.payload
         },
-<<<<<<< HEAD
         deleteBooks(state, action) {
             state.books.filter(el => el.id !== action.payload)
         },
@@ -44,13 +43,4 @@ const Books = createSlice({
 })
 
 export const {setBooks, deleteBooks, addReadBook, removeReadBook} = Books.actions
-=======
-    },
-    extraReducers: {
-        [getBooks.fulfilled]: (state, action) => {state.foundBooks = [...action.payload.items]}
-    }
-})
-
-export const {setBooks} = Books.actions
->>>>>>> main
 export default Books.reducer

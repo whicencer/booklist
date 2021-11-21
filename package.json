@@ -1,10 +1,6 @@
 {
   "name": "booklist",
-<<<<<<< HEAD
   "homepage": "http://whicencer.github.io/booklist",
-=======
-  "homepage": "https://whicencer.github.io/booklist",
->>>>>>> main
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
