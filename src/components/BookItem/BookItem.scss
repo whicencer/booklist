@@ -6,6 +6,10 @@
     
     font-family: sans-serif;
 
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
     &:hover {
         transform: scale(1.05);
     }
@@ -13,4 +17,11 @@
     img {width: 200px;}
     h2 {font-size: 17px;}
     p {font-size: 15px;}
+}
+
+@media screen and (max-width: 690px) {
+    .book {
+        align-items: center;
+        text-align: center;
+    }
 }

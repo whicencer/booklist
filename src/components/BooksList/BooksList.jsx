@@ -28,11 +28,12 @@ const BooksList = () => {
                 books.length === 0
                     ? <h2>There are no books here...</h2>
                     : books.map((el, key) => {
-                        console.log(el)
                         return(
                             <BookItem
                                 key={key}
                                 title={el.title}
+                                id={el.id}
+                                isRead={el.read}
                                 thumbnail={el.thumb}
                                 author={el.author}
                                 handleClick={() => {
