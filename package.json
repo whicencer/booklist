@@ -1,5 +1,6 @@
 {
   "name": "booklist",
+  "homepage": "https://whicencer.github.io/booklist",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
@@ -15,6 +16,7 @@
     "dotenv": "^10.0.0",
     "file-loader": "^6.2.0",
     "firebase": "9.4.1",
+    "gh-pages": "^3.2.3",
     "html-webpack-plugin": "^5.5.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
