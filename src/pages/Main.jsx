@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import BooksList from '../components/BooksList/BooksList';
 
 import { useDispatch } from 'react-redux';
-import { getBooksFromFire, setBooks } from '../store/reducers/Books';
+import { getBooksFromFire } from '../store/reducers/Books';
 
 const Main = () => {
     const dispatch = useDispatch()
