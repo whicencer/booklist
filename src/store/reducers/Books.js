@@ -30,7 +30,8 @@ const Books = createSlice({
     name: 'Books',
     initialState: {
         books: [],
-        foundBooks: []
+        foundBooks: [],
+        readBooks: []
     },
     reducers: {
         setBooks(state, action) {
@@ -38,13 +39,25 @@ const Books = createSlice({
         },
         deleteBooks(state, action) {
             state.books.filter(el => el.id !== action.payload)
+        },
+        addReadBook(state, action) {
+            const readBook = state.books.find(el => el.id === action.payload)
+            readBook.read = true
+            state.readBooks = [...state.books.filter(el => el.read === true)]
+        },
+        removeReadBook(state, action) {
+            state.books.find(el => el.id === action.payload).read = false
+            state.readBooks = state.readBooks.filter(el => el.id !== action.payload)
         }
     },
     extraReducers: {
         [getBooks.fulfilled]: (state, action) => {state.foundBooks = [...action.payload.items]},
-        [getBooksFromFire.fulfilled]: (state, action) => {state.books = [...action.payload]}
+        [getBooksFromFire.fulfilled]: (state, action) => {
+            state.books = [...action.payload]
+            state.readBooks = state.books.filter(el => el.read === true)
+        }
     }
 })
 
-export const {setBooks, deleteBooks} = Books.actions
+export const {setBooks, deleteBooks, addReadBook, removeReadBook} = Books.actions
 export default Books.reducer
