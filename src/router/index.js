@@ -5,12 +5,12 @@ import AuthPage from "../pages/AuthPage";
 
 export const publicRoutes = [
     {
-        path: 'booklist/login',
+        path: '/booklist/login',
         component: AuthPage,
         exact: false
     },
     {
-        path: 'booklist/register',
+        path: '/booklist/register',
         component: AuthPage,
         exact: false
     },
@@ -18,17 +18,17 @@ export const publicRoutes = [
 
 export const privateRoutes = [
     {
-        path: 'booklist/', 
+        path: '/booklist', 
         component: Main,
         exact: true
     },
     {
-        path: 'booklist/add-book',
+        path: '/booklist/add-book',
         component: addBook,
         exact: false
     },
     {
-        path: 'booklist/read-books',
+        path: '/booklist/read-books',
         component: readBooks,
         exact: false
     },
