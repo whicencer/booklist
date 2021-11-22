@@ -21,7 +21,7 @@ const App = () => {
           });
     }, [])
     return (
-        <BrowserRouter basename="/booklist">
+        <BrowserRouter basename="booklist">
             <Header />
             <Routers />
         </BrowserRouter>
