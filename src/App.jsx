@@ -21,7 +21,7 @@ const App = () => {
           });
     }, [])
     return (
-        <BrowserRouter basename="http://whicencer.github.io/booklist">
+        <BrowserRouter basename="/booklist">
             <Header />
             <Routers />
         </BrowserRouter>
