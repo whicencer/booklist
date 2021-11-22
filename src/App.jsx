@@ -21,7 +21,7 @@ const App = () => {
           });
     }, [])
     return (
-        <BrowserRouter basename={process.env.PUBLIC_URL}>
+        <BrowserRouter basename="http://whicencer.github.io/booklist">
             <Header />
             <Routers />
         </BrowserRouter>
